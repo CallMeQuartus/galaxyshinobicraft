@@ -13,7 +13,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class EntityStatsCapability implements ICapabilitySerializable<CompoundTag> {
 
-    private static final Capability<IEntityStats> INSTANCE = CapabilityManager.get(new CapabilityToken<>() {});
+    public static final Capability<IEntityStats> INSTANCE = CapabilityManager.get(new CapabilityToken<>() {});
     private final IEntityStats instance = new EntityStatsBase();
 
     @Override
@@ -81,4 +81,5 @@ public class EntityStatsCapability implements ICapabilitySerializable<CompoundTa
         }
         return props;
     }
+
 }
