@@ -1,6 +1,7 @@
 package com.yuanno.shinobicraft;
 
 import com.mojang.logging.LogUtils;
+import com.yuanno.shinobicraft.init.ModNetwork;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
@@ -49,11 +50,11 @@ public class Main
 
         MinecraftForge.EVENT_BUS.register(this);
 
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event)
     {
+        ModNetwork.init();
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call

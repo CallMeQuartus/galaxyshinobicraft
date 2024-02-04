@@ -1,5 +1,6 @@
 package com.yuanno.shinobicraft.data.entity;
 
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.LivingEntity;
 
 public class EntityStatsBase implements IEntityStats {
@@ -243,4 +244,55 @@ public class EntityStatsBase implements IEntityStats {
         return this.senjutsuExperience;
     }
 
+    @Override
+    public CompoundTag serializeNBT() {
+        CompoundTag nbt = new CompoundTag();
+
+        nbt.putInt("ninjaLevel", this.getNinjaLevel());
+        nbt.putInt("ninjutsuLevel", this.getNinjutsuLevel());
+        nbt.putInt("taijutsuLevel", this.getTaijutsuLevel());
+        nbt.putInt("genjutsuLevel", this.getGenjutsuLevel());
+        nbt.putInt("kenjutsuLevel", this.getKenjutsuLevel());
+        nbt.putInt("medicaljutsuLevel", this.getMedicaljutsuLevel());
+        nbt.putInt("fuuinjutsuLevel", this.getFuuinjutsuLevel());
+        nbt.putInt("dojutsuLevel", this.getDojutsuLevel());
+        nbt.putInt("summoningLevel", this.getSummoningLevel());
+        nbt.putInt("senjutsuLevel", this.getSenjutsuLevel());
+
+        nbt.putDouble("ninjutsuExperience", this.getNinjutsuExperience());
+        nbt.putDouble("taijutsuExperience", this.getTaijutsuExperience());
+        nbt.putDouble("genjutsuExperience", this.getGenjutsuExperience());
+        nbt.putDouble("kenjutsuExperience", this.getKenjutsuExperience());
+        nbt.putDouble("medicaljutsuExperience", this.getMedicalExperience());
+        nbt.putDouble("fuuinjutsuExperience", this.getFuuinjutsuExperience());
+        nbt.putDouble("dojutsuExperience", this.getDojutsuExperience());
+        nbt.putDouble("summoningExperience", this.getSummoningExperience());
+        nbt.putDouble("senjutsuExperience", this.getSenjutsuExperience());
+
+        return nbt;
+    }
+
+    @Override
+    public void deserializeNBT(CompoundTag nbt) {
+        this.setNinjaLevel(nbt.getInt("ninjaLevel"));
+        this.setNinjutsuLevel(nbt.getInt("ninjutsuLevel"));
+        this.setTaijutsuLevel(nbt.getInt("taijutsuLevel"));
+        this.setGenjutsuLevel(nbt.getInt("genjutsuLevel"));
+        this.setKenjutsuLevel(nbt.getInt("kenjutsuLevel"));
+        this.setMedicaljutsuLevel(nbt.getInt("medicaljutsuLevel"));
+        this.setFuuinjutsuLevel(nbt.getInt("fuuinjutsuLevel"));
+        this.setDojutsuLevel(nbt.getInt("dojutsuLevel"));
+        this.setSummoningLevel(nbt.getInt("summoningLevel"));
+        this.setSenjutsuLevel(nbt.getInt("senjutsuLevel"));
+
+        this.setNinjutsuExperience(nbt.getDouble("ninjutsuExperience"));
+        this.setTaijutsuExperience(nbt.getDouble("taijutsuExperience"));
+        this.setGenjutsuExperience(nbt.getDouble("genjutsuExperience"));
+        this.setKenjutsuExperience(nbt.getDouble("kenjutsuExperience"));
+        this.setMedicalExperience(nbt.getDouble("medicaljutsuExperience"));
+        this.setFuuinjutsuExperience(nbt.getDouble("fuuinjutsuExperience"));
+        this.setDojutsuExperience(nbt.getDouble("dojutsuExperience"));
+        this.setSummoningExperience(nbt.getDouble("summoningExperience"));
+        this.setSenjutsuExperience(nbt.getDouble("senjutsuExperience"));
+    }
 }

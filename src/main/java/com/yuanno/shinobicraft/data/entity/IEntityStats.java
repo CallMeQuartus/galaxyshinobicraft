@@ -1,8 +1,10 @@
 package com.yuanno.shinobicraft.data.entity;
 
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraftforge.common.util.INBTSerializable;
 
-public interface IEntityStats {
+public interface IEntityStats extends INBTSerializable<CompoundTag> {
 
     IEntityStats setOwner(LivingEntity entity);
 

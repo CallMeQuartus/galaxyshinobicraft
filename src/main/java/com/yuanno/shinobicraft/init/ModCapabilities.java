@@ -10,6 +10,10 @@ import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
+/**
+ * This registers capabilities and attaches them to the entities
+ * Could also be attached to item for example
+ */
 @Mod.EventBusSubscriber(modid = Main.MODID)
 public class ModCapabilities {
 
