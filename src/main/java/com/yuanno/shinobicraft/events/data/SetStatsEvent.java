@@ -1,10 +1,15 @@
 package com.yuanno.shinobicraft.events.data;
 
 import com.yuanno.shinobicraft.Main;
+import com.yuanno.shinobicraft.data.dna.DnaCapability;
+import com.yuanno.shinobicraft.data.dna.IDna;
 import com.yuanno.shinobicraft.data.entity.EntityStatsCapability;
 import com.yuanno.shinobicraft.data.entity.IEntityStats;
+import com.yuanno.shinobicraft.init.ModValues;
 import com.yuanno.shinobicraft.networking.ShinobiNetwork;
+import com.yuanno.shinobicraft.networking.server.SSyncDnaPacket;
 import com.yuanno.shinobicraft.networking.server.SSyncEntityStatsDataPacket;
+import com.yuanno.shinobicraft.releases.Release;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
@@ -12,6 +17,8 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+
+import java.util.ArrayList;
 
 @Mod.EventBusSubscriber(modid = Main.MODID)
 public class SetStatsEvent {
@@ -23,14 +30,15 @@ public class SetStatsEvent {
             return;
 
         IEntityStats entityStats = EntityStatsCapability.get(player);
+        IDna dna = DnaCapability.get(player);
         // checks if the player has stats attached if not add them
         if (entityStats.getNinjaLevel() == 0)
-        {
             statsHandling(entityStats);
-            ShinobiNetwork.sendTo(new SSyncEntityStatsDataPacket(player), (ServerPlayer) player);
-        }
+        if (dna.getReleases().isEmpty())
+            dnaHandling(dna);
 
-
+        ShinobiNetwork.sendTo(new SSyncEntityStatsDataPacket(player), (ServerPlayer) player);
+        ShinobiNetwork.sendTo(new SSyncDnaPacket(player), (ServerPlayer) player);
     }
 
     // handling of first stats are done here later add kekkei genkai etc.
@@ -55,5 +63,32 @@ public class SetStatsEvent {
         entityStats.setDojutsuExperience(0);
         entityStats.setSummoningExperience(0);
         entityStats.setSenjutsuExperience(0);
+    }
+    public static void dnaHandling(IDna dna)
+    {
+        String firstRelease = getRandomString(ModValues.NATURE_RELEASES);
+        String secondRelease = "";
+        do
+        {
+            secondRelease = getRandomString(ModValues.NATURE_RELEASES);
+        } while (secondRelease.equals(firstRelease));
+        Release specialRelease = getRandomRelease(ModValues.ADVANCED_RELEASES);
+        if (ModValues.random.nextInt(100) < 10)
+        {
+            dna.addSpecialRelease(specialRelease);
+            if (specialRelease.)
+        }
+    }
+
+    public static String getRandomString(ArrayList<String> arrayList)
+    {
+        int randomIndex = ModValues.random.nextInt(arrayList.size());
+        return arrayList.get(randomIndex);
+    }
+
+    public static Release getRandomRelease(ArrayList<Release> releases)
+    {
+        int randomIndex = ModValues.random.nextInt(releases.size());
+        return releases.get(randomIndex);
     }
 }

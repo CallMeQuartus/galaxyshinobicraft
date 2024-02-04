@@ -1,6 +1,7 @@
 package com.yuanno.shinobicraft.init;
 
 import com.yuanno.shinobicraft.Main;
+import com.yuanno.shinobicraft.data.dna.DnaCapability;
 import com.yuanno.shinobicraft.data.entity.EntityStatsCapability;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
@@ -20,6 +21,7 @@ public class ModCapabilities {
     @SubscribeEvent
     public static void register(RegisterCapabilitiesEvent event) {
         event.register(EntityStatsCapability.class);
+        event.register(DnaCapability.class);
     }
 
     @SubscribeEvent
@@ -30,6 +32,7 @@ public class ModCapabilities {
 
         if (event.getObject() instanceof LivingEntity) {
             event.addCapability(new ResourceLocation(Main.MODID, "entity_stats"), new EntityStatsCapability());
+            event.addCapability(new ResourceLocation(Main.MODID, "dna"), new DnaCapability());
         }
     }
 }
