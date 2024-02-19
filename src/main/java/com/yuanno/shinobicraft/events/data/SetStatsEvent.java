@@ -7,6 +7,7 @@ import com.yuanno.shinobicraft.data.entity.EntityStatsCapability;
 import com.yuanno.shinobicraft.data.entity.IEntityStats;
 import com.yuanno.shinobicraft.init.ModValues;
 import com.yuanno.shinobicraft.networking.ShinobiNetwork;
+import com.yuanno.shinobicraft.networking.server.SOpenClanChoiceScreenPacket;
 import com.yuanno.shinobicraft.networking.server.SSyncDnaPacket;
 import com.yuanno.shinobicraft.networking.server.SSyncEntityStatsDataPacket;
 import com.yuanno.shinobicraft.releases.Release;
@@ -34,8 +35,8 @@ public class SetStatsEvent {
         // checks if the player has stats attached if not add them
         if (entityStats.getNinjaLevel() == 0)
             statsHandling(entityStats);
-        if (dna.getReleases().isEmpty())
-            dnaHandling(dna);
+        if (dna.getClan().isEmpty())
+            ShinobiNetwork.sendTo(new SOpenClanChoiceScreenPacket(), player);
 
         ShinobiNetwork.sendTo(new SSyncEntityStatsDataPacket(player), (ServerPlayer) player);
         ShinobiNetwork.sendTo(new SSyncDnaPacket(player), (ServerPlayer) player);

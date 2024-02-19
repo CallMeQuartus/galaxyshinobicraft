@@ -11,6 +11,7 @@ public class DnaDataBase implements IDna {
     private LivingEntity owner;
     private ArrayList<Release> releases = new ArrayList<>();
     private ArrayList<String> dojutsus = new ArrayList<>();
+    private String clan = "";
     public IDna setOwner(LivingEntity entity)
     {
         this.owner = entity;
@@ -42,6 +43,16 @@ public class DnaDataBase implements IDna {
     {
         return this.dojutsus;
     }
+
+    public void setClan(String clan)
+    {
+        this.clan = clan;
+    }
+
+    public String getClan()
+    {
+        return this.clan;
+    }
     @Override
     public CompoundTag serializeNBT() {
         CompoundTag nbt = new CompoundTag();
@@ -56,6 +67,7 @@ public class DnaDataBase implements IDna {
         {
             nbt.putString("dojutsu" + i, this.dojutsus.get(i));
         }
+        nbt.putString("clan", this.clan);
 
         return nbt;
     }
@@ -72,5 +84,6 @@ public class DnaDataBase implements IDna {
         {
             this.addDojutsu(nbt.getString("dojutsu" + i));
         }
+        this.setClan(nbt.getString("clan"));
     }
 }

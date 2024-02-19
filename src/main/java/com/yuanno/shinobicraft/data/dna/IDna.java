@@ -18,4 +18,7 @@ public interface IDna extends INBTSerializable<CompoundTag> {
     void addDojutsu(String dojutsu);
     void removeDojutsu(String dojutsu);
     ArrayList<String> getDojutsus();
+
+    void setClan(String clan);
+    String getClan();
 }

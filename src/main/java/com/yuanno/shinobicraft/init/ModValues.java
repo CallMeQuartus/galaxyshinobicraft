@@ -73,5 +73,31 @@ public class ModValues {
     public static final String RINNESHARINGAN = "rinnesharingan";
     public static final String KETSURYUGAN = "ketsuryugan";
 
+    public static final String SENJU = "Senju";
+    public static final String UCHIHA = "Uchiha";
+    public static final String HYUGA = "Hyuga";
+    public static final String UZUMAKI = "Uzumaki";
+    public static final String INUZUKA = "Inuzuka";
+    public static final String LEE = "Lee";
+    public static final String NARA = "Nara";
+    public static final String SARUTOBI = "Sarutobi";
+    public static final String HARUNO = "Haruno";
+    public static final String YAMANAKA = "Yamanaka";
+    public static final String HATAKA = "Hatake";
+    public static final String CHINOIKE = "Chinoike";
 
+    public static final ArrayList<String> CLANS = new ArrayList<String>() {{
+        add(SENJU);
+        add(UCHIHA);
+        add(HYUGA);
+        add(UZUMAKI);
+        add(INUZUKA);
+        add(LEE);
+        add(NARA);
+        add(SARUTOBI);
+        add(HARUNO);
+        add(YAMANAKA);
+        add(HATAKA);
+        add(CHINOIKE);
+    }};
 }
