@@ -11,12 +11,12 @@ public class ModValues {
     public static Random random = new Random();
 
     // basic releases
-    public static final String WATER_RELEASE = "water_release";
-    public static final String FIRE_RELEASE = "fire_release";
-    public static final String WIND_RELEASE = "wind_release";
-    public static final String EARTH_RELEASE = "earth_release";
-    public static final String LIGHTNING_RELEASE = "lightning_release";
-    public static final ArrayList<String> NATURE_RELEASES = new ArrayList<String>() {{
+    public static final Release WATER_RELEASE = new Release("water_release");
+    public static final Release FIRE_RELEASE = new Release("fire_release");
+    public static final Release WIND_RELEASE = new Release("wind_release");
+    public static final Release EARTH_RELEASE = new Release("earth_release");
+    public static final Release LIGHTNING_RELEASE = new Release("lightning_release");
+    public static final ArrayList<Release> NATURE_RELEASES = new ArrayList<Release>() {{
         add(WATER_RELEASE);
         add(FIRE_RELEASE);
         add(WIND_RELEASE);

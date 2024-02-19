@@ -66,18 +66,45 @@ public class SetStatsEvent {
     }
     public static void dnaHandling(IDna dna)
     {
-        String firstRelease = getRandomString(ModValues.NATURE_RELEASES);
-        String secondRelease = "";
+        Release firstRelease = getRandomRelease(ModValues.NATURE_RELEASES);
+        Release secondRelease = new Release();
+        Release thirdRelease = new Release();
         do
         {
-            secondRelease = getRandomString(ModValues.NATURE_RELEASES);
+            secondRelease = getRandomRelease(ModValues.NATURE_RELEASES);
         } while (secondRelease.equals(firstRelease));
-        Release specialRelease = getRandomRelease(ModValues.ADVANCED_RELEASES);
+        do {
+            thirdRelease = getRandomRelease(ModValues.NATURE_RELEASES);
+        } while (thirdRelease.equals(firstRelease) || thirdRelease.equals(secondRelease));
+        // 10% chance of kekkei genkai
         if (ModValues.random.nextInt(100) < 10)
         {
-            dna.addSpecialRelease(specialRelease);
-            if (specialRelease.)
+            Release advancedRelease = getRandomRelease(ModValues.ADVANCED_RELEASES);
+            dna.addRelease(advancedRelease);
+            for (int i = 0; i < advancedRelease.getSubReleases().size(); i++)
+            {
+                dna.addRelease(advancedRelease.getSubReleases().get(i));
+            }
+            return;
         }
+
+        // 10% chance of 3 releases
+        if (ModValues.random.nextInt(100) < 10)
+        {
+            dna.addRelease(firstRelease);
+            dna.addRelease(secondRelease);
+            dna.addRelease(thirdRelease);
+            return;
+        }
+
+        if (ModValues.random.nextInt(100) < 50)
+        {
+            dna.addRelease(firstRelease);
+            dna.addRelease(secondRelease);
+            return;
+        }
+
+        dna.addRelease(firstRelease);
     }
 
     public static String getRandomString(ArrayList<String> arrayList)

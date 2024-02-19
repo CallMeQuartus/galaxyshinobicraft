@@ -1,6 +1,10 @@
 package com.yuanno.shinobicraft.client.screens;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.yuanno.shinobicraft.Main;
+import com.yuanno.shinobicraft.api.RendererHelper;
+import com.yuanno.shinobicraft.data.dna.DnaCapability;
+import com.yuanno.shinobicraft.data.dna.IDna;
 import com.yuanno.shinobicraft.data.entity.EntityStatsCapability;
 import com.yuanno.shinobicraft.data.entity.IEntityStats;
 import net.minecraft.ChatFormatting;
@@ -8,6 +12,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 
 /**
@@ -17,10 +22,12 @@ public class PlayerStatsScreen extends Screen {
 
     private final Player player;
     private final IEntityStats entityStats;
+    private final IDna dna;
     public PlayerStatsScreen() {
         super(Component.empty());
         this.player = Minecraft.getInstance().player;
         this.entityStats = EntityStatsCapability.get(player);
+        this.dna = DnaCapability.get(player);
     }
 
     @Override
@@ -57,6 +64,12 @@ public class PlayerStatsScreen extends Screen {
         this.font.draw(matrixStack, "" + this.entityStats.getDojutsuLevel(), rightShift, posY + 155, 0xFFFFFF);
         this.font.draw(matrixStack, "" + this.entityStats.getSummoningLevel(), rightShift, posY + 170, 0xFFFFFF);
         this.font.draw(matrixStack, "" + this.entityStats.getSenjutsuLevel(), rightShift, posY + 185, 0xFFFFFF);
+
+        for (int i = 0; i < dna.getReleases().size(); i++)
+        {
+            ResourceLocation resourceLocation = new ResourceLocation(Main.MODID, "textures/icon/" + dna.getReleases().get(i).getRelease() + ".png");
+            RendererHelper.drawIcon(resourceLocation, matrixStack, posX + 120, posY + 50 + (i * 15), 0, 16, 16);
+        }
     }
 
     @Override

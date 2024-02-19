@@ -11,15 +11,11 @@ public interface IDna extends INBTSerializable<CompoundTag> {
 
     IDna setOwner(LivingEntity entity);
 
-    void addRelease(String release);
-    void removeRelease(String release);
-    ArrayList<String> getReleases();
+    void addRelease(Release release);
+    void removeRelease(Release release);
+    ArrayList<Release> getReleases();
 
     void addDojutsu(String dojutsu);
     void removeDojutsu(String dojutsu);
     ArrayList<String> getDojutsus();
-
-    void addSpecialRelease(Release release);
-    void removeSpecialRelease(Release release);
-    ArrayList<Release> getSpecialReleases();
 }
