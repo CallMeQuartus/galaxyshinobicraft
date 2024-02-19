@@ -3,6 +3,8 @@ package com.yuanno.shinobicraft.init;
 import com.yuanno.shinobicraft.releases.Release;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 public class ModValues {
@@ -99,5 +101,20 @@ public class ModValues {
         add(YAMANAKA);
         add(HATAKA);
         add(CHINOIKE);
+    }};
+
+    public static final Map<String, String> CLAN_DESCRIPTIONS = new HashMap<String, String>() {{
+        put(SENJU, "Higher fuuinjutsu and ninjutsu gain");
+        put(UCHIHA, "Get the sharingan");
+        put(HYUGA, "Get the byakugan");
+        put(UZUMAKI, "Get higher chakra pool");
+        put(INUZUKA, "Get a pet companion and higher summon gain");
+        put(LEE, "Higher taijutsu stat gain");
+        put(NARA, "Higher intelligence stat gain");
+        put(SARUTOBI, "Guaranteed minimum of 3 releases");
+        put(HARUNO, "Higher healing gain");
+        put(YAMANAKA, "Has telepathy");
+        put(HATAKA, "Fast mastery gain");
+        put(CHINOIKE, "Get the ketsuryugan");
     }};
 }

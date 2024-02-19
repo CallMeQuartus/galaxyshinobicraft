@@ -3,6 +3,8 @@ package com.yuanno.shinobicraft.init;
 import com.yuanno.shinobicraft.networking.ShinobiNetwork;
 import com.yuanno.shinobicraft.networking.client.COpenClanChoiceScreenPacket;
 import com.yuanno.shinobicraft.networking.client.COpenPlayerScreenPacket;
+import com.yuanno.shinobicraft.networking.client.CSyncDnaPacket;
+import com.yuanno.shinobicraft.networking.client.CSyncEntityStatsDataPacket;
 import com.yuanno.shinobicraft.networking.server.SOpenClanChoiceScreenPacket;
 import com.yuanno.shinobicraft.networking.server.SOpenPlayerScreenPacket;
 import com.yuanno.shinobicraft.networking.server.SSyncDnaPacket;
@@ -25,6 +27,8 @@ public class ModNetwork {
         // CLIENT SIDE
         ShinobiNetwork.registerPacket(COpenPlayerScreenPacket.class, COpenPlayerScreenPacket::encode, COpenPlayerScreenPacket::decode, COpenPlayerScreenPacket::handle);
         ShinobiNetwork.registerPacket(COpenClanChoiceScreenPacket.class, COpenClanChoiceScreenPacket::encode, COpenClanChoiceScreenPacket::decode, COpenClanChoiceScreenPacket::handle);
+        ShinobiNetwork.registerPacket(CSyncDnaPacket.class, CSyncDnaPacket::encode, CSyncDnaPacket::decode, CSyncDnaPacket::handle);
+        ShinobiNetwork.registerPacket(CSyncEntityStatsDataPacket.class, CSyncEntityStatsDataPacket::encode, CSyncEntityStatsDataPacket::decode, CSyncEntityStatsDataPacket::handle);
 
     }
 }

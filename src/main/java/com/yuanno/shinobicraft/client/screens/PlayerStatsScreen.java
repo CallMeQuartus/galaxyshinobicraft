@@ -67,8 +67,16 @@ public class PlayerStatsScreen extends Screen {
 
         for (int i = 0; i < dna.getReleases().size(); i++)
         {
-            ResourceLocation resourceLocation = new ResourceLocation(Main.MODID, "textures/icon/" + dna.getReleases().get(i).getRelease() + ".png");
-            RendererHelper.drawIcon(resourceLocation, matrixStack, posX + 120, posY + 50 + (i * 15), 0, 16, 16);
+            ResourceLocation resourceLocation = new ResourceLocation(Main.MODID, "textures/icon/release/" + dna.getReleases().get(i).getRelease() + ".png");
+            RendererHelper.drawIcon(resourceLocation, matrixStack, posX + 160, posY + 50 + (i * 15), 0, 16, 16);
+        }
+        this.font.draw(matrixStack, "" + dna.getClan(), posX + 180, posY + 100, 0xFFFFFF);
+        this.font.draw(matrixStack, "" + dna.getClan(), posX + 180, posY + 100, 0xFFFFFF);
+        for (int i = 0; i < dna.getDojutsus().size(); i++)
+        {
+            ResourceLocation resourceLocation = new ResourceLocation(Main.MODID, "textures/icon/dojutsu/" + dna.getDojutsus().get(i) + ".png");
+            RendererHelper.drawIcon(resourceLocation, matrixStack, posX + 200, posY + 50 + (i * 15), 0, 16, 16);
+
         }
     }
 
