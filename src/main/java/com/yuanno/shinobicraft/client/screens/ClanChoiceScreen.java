@@ -151,16 +151,10 @@ public class ClanChoiceScreen extends Screen {
             // 10% chance to get a fifth release
             if (ModValues.random.nextInt(100) < 10)
             {
-                Release fourthRelease = new Release();
-                do {
-                    fourthRelease = getRandomRelease(ModValues.NATURE_RELEASES);
-                } while (fourthRelease.equals(firstRelease) || fourthRelease.equals(secondRelease) || fourthRelease.equals(thirdRelease));
-                dna.addRelease(fourthRelease);
-                Release fifthRelease = new Release();
-                do {
-                    fifthRelease = getRandomRelease(ModValues.NATURE_RELEASES);
-                } while (fifthRelease.equals(firstRelease) || fifthRelease.equals(secondRelease) || fifthRelease.equals(thirdRelease) || fifthRelease.equals(fourthRelease));
-                dna.addRelease(fifthRelease);
+                for (int i = 0; i < ModValues.NATURE_RELEASES.size(); i++)
+                {
+                    dna.addRelease(ModValues.NATURE_RELEASES.get(i));
+                }
                 return;
             }
 

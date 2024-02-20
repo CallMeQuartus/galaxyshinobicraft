@@ -65,6 +65,14 @@ public class PlayerStatsScreen extends Screen {
         this.font.draw(matrixStack, "" + this.entityStats.getSummoningLevel(), rightShift, posY + 170, 0xFFFFFF);
         this.font.draw(matrixStack, "" + this.entityStats.getSenjutsuLevel(), rightShift, posY + 185, 0xFFFFFF);
 
+        // experience
+        int furtherRightShift = (int) ((posX + 105) / 0.7);
+        matrixStack.pushPose();
+        matrixStack.scale(0.70f, 0.70f , 0.70f);
+        this.font.draw(matrixStack, "" + this.entityStats.getTaijutsuExperience() + "/" + entityStats.getTaijutsuLevel() * 100, furtherRightShift, (int) ((posY + 82) / 0.7), 0xFFFFFF);
+        this.font.draw(matrixStack, "" + this.entityStats.getKenjutsuExperience() + "/" + entityStats.getKenjutsuLevel() * 100, furtherRightShift, (int) ((posY + 112) / 0.7), 0xFFFFFF);
+
+        matrixStack.popPose();
         for (int i = 0; i < dna.getReleases().size(); i++)
         {
             ResourceLocation resourceLocation = new ResourceLocation(Main.MODID, "textures/icon/release/" + dna.getReleases().get(i).getRelease() + ".png");
