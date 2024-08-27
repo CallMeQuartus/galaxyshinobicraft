@@ -2,5 +2,7 @@
   "key.categories.shinobicraft": "Shinobi Craft",
   "key.shinobicraft.stats": "Player Stats Screen",
 
-  "test": "test"
+  "test": "test",
+
+  "item.shinobicraft.headban_union": "Union HeadBand"
 }
